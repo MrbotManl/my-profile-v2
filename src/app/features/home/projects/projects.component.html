@@ -1,0 +1,83 @@
+<section id="projects" class="projects">
+  <div class="projects-container">
+    <!-- Header -->
+    <div class="projects-header">
+      <div class="header-text">
+        <h2 class="section-title">Projects Gallery</h2>
+        <p class="section-description">
+          A curated showcase of my technical expertise in full-stack
+          development, UI design, and modern web architectures.
+        </p>
+      </div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="projects-toolbar">
+      <!-- Category Filters -->
+      <div class="category-filters">
+        @for (category of categories; track category) {
+          <button
+            class="filter-btn"
+            [class.active]="activeCategory() === category"
+            (click)="selectCategory(category)"
+          >
+            {{ category }}
+          </button>
+        }
+      </div>
+
+      <!-- Edit Button -->
+      <button class="edit-btn" (click)="openEditProjects()">
+        <span class="material-symbols-outlined">lock</span>
+        <span>Edit Projects</span>
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of filteredProjects; track project.id) {
+        <div class="project-card">
+          <!-- Image -->
+          <div class="card-image">
+            <img
+              [src]="project.imageUrl"
+              [alt]="project.title"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Content -->
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">{{ project.title }}</h3>
+              <p class="card-tech">{{ project.techStack.join(", ") }}</p>
+            </div>
+
+            <p class="card-description">{{ project.description }}</p>
+
+            <!-- Actions -->
+            <div class="card-actions">
+              @if (project.liveUrl) {
+                <button class="btn btn-primary" (click)="openProject(project)">
+                  <span>Live Demo</span>
+                </button>
+              }
+              <button class="btn btn-secondary" (click)="openGithub(project)">
+                <span>GitHub</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Password Modal -->
+  @if (showPasswordModal()) {
+    <app-password-modal
+      (onSuccess)="onPasswordSuccess()"
+      (onCancel)="onPasswordCancel()"
+    >
+    </app-password-modal>
+  }
+</section>

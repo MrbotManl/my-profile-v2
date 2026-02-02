@@ -1,0 +1,86 @@
+<section id="home" class="hero">
+  <div class="hero-container">
+    <div class="hero-grid">
+      <!-- Text Content -->
+      <div class="hero-content">
+        <div class="hero-text">
+          <!-- Available Badge -->
+          <div class="available-badge">
+            <span class="pulse-dot">
+              <span class="ping"></span>
+              <span class="dot"></span>
+            </span>
+            Available for new projects
+          </div>
+
+          <!-- Headline -->
+          <h1 class="hero-title">
+            Crafting <span class="text-primary">Interactive</span> Digital
+            Experiences.
+          </h1>
+
+          <!-- Description -->
+          <p class="hero-description">
+            I'm <span class="font-semibold">{{ personalInfo.name }}</span
+            >, a passionate full-stack developer specializing in Angular,
+            JavaScript, and building high-performance web applications.
+          </p>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="hero-actions">
+          <button class="btn btn-primary" (click)="scrollToProjects()">
+            <span class="material-symbols-outlined">folder_open</span>
+            <span>View Projects</span>
+          </button>
+          <button class="btn btn-secondary" (click)="downloadCv()">
+            <span class="material-symbols-outlined">download</span>
+            <span>Resume</span>
+          </button>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats">
+          @for (stat of stats; track stat.label; let last = $last) {
+            <div class="stat">
+              <span class="stat-value">{{ stat.value }}</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
+            @if (!last) {
+              <div class="stat-divider"></div>
+            }
+          }
+        </div>
+      </div>
+
+      <!-- Profile Image -->
+      <div class="hero-image-wrapper">
+        <div class="hero-image-container">
+          <!-- Decorative elements -->
+          <div class="circle-decoration circle-1"></div>
+          <div class="circle-decoration circle-2"></div>
+
+          <!-- Main Image -->
+          <div class="profile-image">
+            <img
+              src="assets/images/me.jpeg"
+              alt="Professional portrait of {{ personalInfo.name }}"
+              loading="eager"
+            />
+          </div>
+
+          <!-- Floating Badge -->
+          <div class="floating-badge">
+            <div class="badge-icon">
+              <span class="material-symbols-outlined">terminal</span>
+            </div>
+            <div class="badge-text">
+              <p class="badge-label">Top Rated</p>
+              <p class="badge-title">Frontend Dev</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

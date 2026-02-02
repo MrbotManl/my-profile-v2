@@ -1,0 +1,73 @@
+<header class="header">
+  <div class="header-container">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <div class="logo-badge">
+        <span class="logo-text">MMH</span>
+      </div>
+      <div class="logo-info">
+        <h2 class="logo-name">Mohamed Mahmoud Mahdy</h2>
+        <p class="logo-title">Full-Stack Developer</p>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      @for (link of navLinks; track link.label) {
+        <a
+          class="nav-link"
+          [href]="link.href"
+          (click)="scrollTo($event, link.href)"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+
+    <!-- Actions -->
+    <div class="header-actions">
+      <div class="nav-divider"></div>
+
+      <!-- Theme Toggle -->
+      <button
+        class="theme-toggle"
+        (click)="themeService.toggleTheme()"
+        [attr.aria-label]="
+          themeService.isDarkMode()
+            ? 'Switch to light mode'
+            : 'Switch to dark mode'
+        "
+      >
+        <span class="material-symbols-outlined">
+          {{ themeService.isDarkMode() ? "light_mode" : "dark_mode" }}
+        </span>
+      </button>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        class="mobile-menu-toggle"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="isMenuOpen"
+      >
+        <span class="material-symbols-outlined">
+          {{ isMenuOpen ? "close" : "menu" }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  @if (isMenuOpen) {
+    <nav class="mobile-nav">
+      @for (link of navLinks; track link.label) {
+        <a
+          class="mobile-nav-link"
+          [href]="link.href"
+          (click)="scrollTo($event, link.href)"
+        >
+          {{ link.label }}
+        </a>
+      }
+    </nav>
+  }
+</header>

@@ -1,0 +1,130 @@
+<section id="contact" class="contact">
+  <div class="contact-container">
+    <!-- Header -->
+    <div class="contact-header">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Let's Work Together</h2>
+      <p class="section-description">
+        Have a project in mind or just want to say hello? Feel free to reach
+        out. I'm always open to discussing new opportunities.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <div class="info-cards">
+          @for (info of contactInfo; track info.label) {
+            <div class="info-card">
+              <div class="info-icon">
+                <span class="material-symbols-outlined">{{ info.icon }}</span>
+              </div>
+              <div class="info-content">
+                <span class="info-label">{{ info.label }}</span>
+                @if (info.href) {
+                  <a [href]="info.href" class="info-value">{{ info.value }}</a>
+                } @else {
+                  <span class="info-value">{{ info.value }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-section">
+          <h3 class="social-title">Follow Me</h3>
+          <div class="social-links">
+            @for (link of socialLinks; track link.label) {
+              <a
+                class="social-link"
+                [href]="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="link.label"
+              >
+                <span class="material-symbols-outlined">{{ link.icon }}</span>
+                <span>{{ link.label }}</span>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
+        <form class="contact-form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="John Doe"
+              [(ngModel)]="formData.name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="john@example.com"
+              [(ngModel)]="formData.email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject (Optional)</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              class="form-input"
+              placeholder="Project Inquiry"
+              [(ngModel)]="formData.subject"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-input form-textarea"
+              placeholder="Tell me about your project..."
+              rows="5"
+              [(ngModel)]="formData.message"
+              required
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="isSubmitting() || !isFormValid()"
+          >
+            @if (isSubmitting()) {
+              <span class="material-symbols-outlined spinning"
+                >progress_activity</span
+              >
+              <span>Sending...</span>
+            } @else if (isSubmitted()) {
+              <span class="material-symbols-outlined">check_circle</span>
+              <span>Message Sent!</span>
+            } @else {
+              <span class="material-symbols-outlined">send</span>
+              <span>Send Message</span>
+            }
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,67 @@
+<section id="about" class="about">
+  <div class="about-container">
+    <div class="about-grid">
+      <!-- Text Content -->
+      <div class="about-content">
+        <div class="about-header">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title">
+            Passionate Developer Building
+            <span class="text-primary">Digital Solutions</span>
+          </h2>
+        </div>
+
+        <div class="about-text">
+          <p>{{ personalInfo.aboutMe }}</p>
+          <p>
+            With over {{ personalInfo.yearsExp }} years of experience in web
+            development, I've had the privilege of working on diverse projects
+            that have sharpened my skills in both frontend and backend
+            technologies.
+          </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-number">{{ personalInfo.yearsExp }}+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">{{ personalInfo.projectsCount }}+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">{{ personalInfo.clients }}+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <button class="btn btn-primary" (click)="downloadCv()">
+          <span class="material-symbols-outlined">download</span>
+          <span>Download Resume</span>
+        </button>
+      </div>
+
+      <!-- Highlights Cards -->
+      <div class="about-highlights">
+        @for (highlight of highlights; track highlight.title) {
+          <div class="highlight-card">
+            <div class="highlight-icon">
+              <span class="material-symbols-outlined">{{
+                highlight.icon
+              }}</span>
+            </div>
+            <div class="highlight-content">
+              <h3 class="highlight-title">{{ highlight.title }}</h3>
+              <p class="highlight-description">{{ highlight.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

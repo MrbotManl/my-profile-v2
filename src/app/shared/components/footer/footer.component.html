@@ -1,0 +1,36 @@
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-content">
+      <!-- Social Links -->
+      <div class="social-links">
+        @for (link of socialLinks; track link.label) {
+          <a
+            class="social-link"
+            [href]="link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="link.label"
+          >
+            <span class="material-symbols-outlined">{{ link.icon }}</span>
+          </a>
+        }
+      </div>
+
+      <!-- Navigation & Back to Top -->
+      <div class="footer-nav">
+        <button class="back-to-top" (click)="scrollToTop()">
+          Back to Top
+          <span class="material-symbols-outlined">arrow_upward</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="copyright">
+      <p class="copyright-text">
+        © {{ currentYear }} {{ personalInfo.name }}. All rights reserved.
+      </p>
+      <p class="built-with">Built with passion & Angular.</p>
+    </div>
+  </div>
+</footer>

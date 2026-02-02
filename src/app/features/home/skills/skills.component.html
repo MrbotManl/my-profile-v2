@@ -1,0 +1,48 @@
+<section id="skills" class="skills">
+  <div class="skills-container">
+    <!-- Header -->
+    <div class="skills-header">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-description">
+        Core technologies and tools I use to bring ideas to life. Constantly
+        learning and expanding my expertise.
+      </p>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-grid">
+      @for (skill of skills; track skill.name) {
+        <div class="skill-card">
+          <!-- Icon -->
+          <div
+            class="skill-icon"
+            [style.background-color]="skill.color + '15'"
+            [style.color]="skill.color"
+          >
+            <span class="material-symbols-outlined">{{ skill.icon }}</span>
+          </div>
+
+          <!-- Content -->
+          <div class="skill-content">
+            <div class="skill-header">
+              <h3 class="skill-name">{{ skill.name }}</h3>
+              <span class="skill-percentage">{{ skill.percentage }}%</span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                [style.width.%]="skill.percentage"
+                [style.background-color]="skill.color"
+              ></div>
+            </div>
+
+            <!-- Description -->
+            <p class="skill-description">{{ skill.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
