@@ -1,0 +1,6 @@
+{
+  "routes": [
+    "/weather",
+    "/weather-List"
+  ]
+}
